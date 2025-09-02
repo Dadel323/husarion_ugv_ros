@@ -107,7 +107,7 @@
   </xacro:macro>
 
   <!-- Lights -->
-  <xacro:macro name="light" params="reference_frame name topic namespace:=''">
+  <!-- <xacro:macro name="light" params="reference_frame name topic namespace:=''">
     <gazebo>
       <plugin filename="LEDStrip" name="husarion_ugv_gazebo::LEDStrip">
         <light_name>${name}</light_name>
@@ -139,6 +139,6 @@
         </attenuation>
       </light>
     </gazebo>
-  </xacro:macro>
+  </xacro:macro> -->
 
 </robot>

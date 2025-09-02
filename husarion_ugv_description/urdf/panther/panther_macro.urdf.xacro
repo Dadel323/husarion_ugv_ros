@@ -62,7 +62,7 @@
       <hardware>
         <xacro:if value="${use_sim}">
           <plugin>husarion_ugv_gazebo/EStopSystem</plugin>
-          <param name="e_stop_initial_state">true</param>
+          <param name="e_stop_initial_state">false</param>
         </xacro:if>
 
         <xacro:unless value="${use_sim}">
@@ -187,8 +187,8 @@
       </xacro:if>
       <xacro:gazebo.controller config_file="${controller_config_file}" namespace="${namespace}" />
       <xacro:gazebo.imu reference_frame="imu_link" namespace="${namespace}" />
-      <xacro:gazebo.light reference_frame="lights_channel_1_link" name="lights_channel_1" topic="lights/channel_1_frame" namespace="${namespace}" />
-      <xacro:gazebo.light reference_frame="lights_channel_2_link" name="lights_channel_2" topic="lights/channel_2_frame" namespace="${namespace}" />
+      <!-- <xacro:gazebo.light reference_frame="lights_channel_1_link" name="lights_channel_1" topic="lights/channel_1_frame" namespace="${namespace}" />
+      <xacro:gazebo.light reference_frame="lights_channel_2_link" name="lights_channel_2" topic="lights/channel_2_frame" namespace="${namespace}" /> -->
     </xacro:if>
   </xacro:macro>
 
