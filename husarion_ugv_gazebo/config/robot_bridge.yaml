@@ -12,12 +12,12 @@
   gz_type_name: gz.msgs.Twist
   direction: GZ_TO_ROS
 
-# - topic_name: /<namespace>/lights/channel_1_frame
-#   ros_type_name: sensor_msgs/msg/Image
-#   gz_type_name: gz.msgs.Image
-#   direction: ROS_TO_GZ
+- topic_name: /<namespace>/lights/channel_1_frame
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: ROS_TO_GZ
 
-# - topic_name: /<namespace>/lights/channel_2_frame
-#   ros_type_name: sensor_msgs/msg/Image
-#   gz_type_name: gz.msgs.Image
-#   direction: ROS_TO_GZ
+- topic_name: /<namespace>/lights/channel_2_frame
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: ROS_TO_GZ
