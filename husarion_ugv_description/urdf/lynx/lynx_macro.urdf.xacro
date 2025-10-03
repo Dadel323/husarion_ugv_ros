@@ -6,7 +6,7 @@
     params="wheel_config_file
             controller_config_file
             battery_config_file
-            use_sim:=false
+            use_sim:=true
             imu_xyz:='0.052 0.073 -0.006'
             imu_rpy:='0.0 0.0 -1.57'
             namespace:=''">
@@ -60,49 +60,9 @@
 
     <ros2_control name="${ns}lynx_system" type="system">
       <hardware>
-        <xacro:if value="${use_sim}">
-          <plugin>husarion_ugv_gazebo/EStopSystem</plugin>
-          <param name="e_stop_initial_state">false</param>
-        </xacro:if>
-
-        <xacro:unless value="${use_sim}">
-          <plugin>husarion_ugv_hardware_interfaces/LynxSystem</plugin>
-
-          <param name="encoder_resolution">1600</param>
-
-          <param name="gear_ratio">30.08</param>
-          <param name="gearbox_efficiency">0.75</param>
-
-          <!-- Same as set in the Roboteq driver (TNM parameter) -->
-          <param name="motor_torque_constant">0.11</param>
-
-          <!-- Max RPM speed set in the Roboteq driver (MXRPM parameter) -->
-          <param name="max_rpm_motor_speed">3600.0</param>
-
-          <param name="can_interface_name">robot_can</param>
-          <param name="master_can_id">3</param>
-          <param name="driver_can_id">1</param>
-          <param name="sdo_operation_timeout_ms">100</param>
-
-          <!-- Depends on frequency of the controller, more critical motors state are sent with
-            higher frequency, other parameters are sent with lower, here allowed time is set
-            to be expected period +50% margin -->
-          <param name="pdo_motor_states_timeout_ms">15</param>
-          <param name="pdo_driver_state_timeout_ms">75</param>
-
-          <!-- It will be rounded to the closest value taking into account current controller frequency -->
-          <param name="driver_states_update_frequency">20.0</param>
-
-          <param name="max_roboteq_initialization_attempts">5</param>
-          <param name="max_roboteq_activation_attempts">5</param>
-
-          <!-- TODO after all tests update parameters, these ones are quite high for the worst case scenario -->
-          <param name="max_write_pdo_cmds_errors_count">2</param>
-          <param name="max_read_pdo_motor_states_errors_count">2</param>
-          <param name="max_read_pdo_driver_state_errors_count">2</param>
-        </xacro:unless>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
       </hardware>
-
+      
       <joint name="fl_wheel_joint">
         <command_interface name="velocity" />
         <state_interface name="position" />
@@ -187,8 +147,6 @@
       <xacro:gazebo.controller config_file="${controller_config_file}" namespace="${namespace}" />
       <xacro:gazebo.imu reference_frame="imu_link" namespace="${namespace}" />
       <!-- TODO Add lights visualization -->
-      <!-- <xacro:gazebo.light reference_frame="lights_channel_1_link" name="lights_channel_1" topic="lights/channel_1_frame" namespace="${namespace}" /> -->
-      <!-- <xacro:gazebo.light reference_frame="lights_channel_2_link" name="lights_channel_2" topic="lights/channel_2_frame" namespace="${namespace}" /> -->
     </xacro:if>
   </xacro:macro>
 

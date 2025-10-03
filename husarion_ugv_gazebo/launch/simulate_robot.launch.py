@@ -267,7 +267,7 @@ def generate_launch_description():
         SetUseSimTime(True),
         spawn_robot_launch,
         #lights_launch,
-        manager_launch,
+        #manager_launch,
         controller_launch,
         ekf_launch,
         simulate_components,

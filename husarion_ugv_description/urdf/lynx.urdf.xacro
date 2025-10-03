@@ -26,7 +26,7 @@
   <xacro:arg name="components_config_path" default="$(find husarion_ugv_description)/config/components.yaml" />
   <xacro:property name="components_config_path_property" value="$(arg components_config_path)" />
 
-  <xacro:unless value="${components_config_path_property == 'None'}">
+  <!-- <xacro:unless value="${components_config_path_property == 'None'}">
     <xacro:include filename="$(find husarion_components_description)/urdf/components.urdf.xacro"
       ns="husarion_components" />
 
@@ -35,5 +35,5 @@
       namespace="$(arg namespace)"
       use_sim="$(arg use_sim)"
     />
-  </xacro:unless>
+  </xacro:unless> -->
 </robot>
