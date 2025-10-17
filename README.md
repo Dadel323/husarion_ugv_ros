@@ -13,6 +13,6 @@ ROS 2 packages for Husarion UGV (Unmanned Ground Vehicle). The repository is a c
 
 This fork (by @Dadel323) includes local modifications:
 - Removed E-Stop since not needed for own simulation
-- Updated URDF and Launch File to work with gazebo Harmonic and ROS2 Jazzy
+- Removed Light to make more computationaly lightweight for own simulation
 
 
